@@ -1,5 +1,6 @@
 package com.ryan.converter;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import com.ryan.converter.RomanNumeralConverter;
@@ -11,6 +12,8 @@ import com.ryan.converter.utils.RomanNumeral;
 class RomanNumeralConverterTest {
 
     static class toRoman {
+
+        @Tag("slow")
         @Test
         void failsWithNegativeNumber() {
             IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,

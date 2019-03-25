@@ -23,5 +23,7 @@ ENV PATH=$PATH:/opt/gradle/gradle-5.0/bin
 RUN git clone https://github.com/ryMarsh44/RomanNumeralServer.git
 
 # Build Project
+RUN cd RomanNumeralServer && ./gradlew build
+
 EXPOSE 8080
-ENTRYPOINT ["start_service.sh"]
+ENTRYPOINT cd RomanNumeralServer && java -jar build/libs/romannumeral_converter-0.1.0.jar
