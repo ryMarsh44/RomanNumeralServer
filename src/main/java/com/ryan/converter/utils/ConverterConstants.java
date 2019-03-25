@@ -34,4 +34,10 @@ public class ConverterConstants {
     public static String CM = "CM";
     public static String M = "M";
 
+
+    /**
+     * Accumulator to build Roman Numeral
+     */
+    public static String ROMAN_NMERAL_ACC = "";
+
 }

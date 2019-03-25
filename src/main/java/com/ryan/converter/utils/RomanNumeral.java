@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import com.ryan.converter.utils.ConverterConstants;
 
 public enum RomanNumeral {
     /**
@@ -46,12 +45,12 @@ public enum RomanNumeral {
     public static RomanNumeral valueOf(int value) { return romanNumerals.getOrDefault(value, UNKNOWN_NUM); }
 
     /**
-     * Finds the largest RomanNumeral that is less than or equal to value.
+     * Finds the closest RomanNumeral that is less than or equal to value.
      *
-     * @param value The integer that largest divisible will be found for.
-     * @return The RomanNumeral that corresponds to the divisible.
+     * @param value The value to find closest roman numeral for.
+     * @return The RomanNumeral that is closest to parameter (return <= value).
      */
-    public static RomanNumeral getLargest(int value) throws NoSuchElementException {
+    public static RomanNumeral findClosest(int value) throws NoSuchElementException {
         if (valueOf(value) != UNKNOWN_NUM) return  valueOf(value);
 
         return valueOf(romanNumerals
@@ -106,5 +105,4 @@ public enum RomanNumeral {
                 throw new NoSuchElementException();
         }
     }
-
 }

@@ -8,6 +8,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import com.ryan.converter.utils.RomanNumeral.*;
 
+package com.ryan.converter.utils;
+
+import com.ryan.converter.utils.ConverterConstants;
+import com.ryan.converter.utils.RomanNumeral;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.NoSuchElementException;
 
 class RomanNumeralTest {
@@ -37,23 +46,23 @@ class RomanNumeralTest {
     @Test
     void findLargestDivisibleFailsWithNoValue() {
         assertThrows(NoSuchElementException.class,
-                () -> RomanNumeral.getLargest(0));
+                () -> RomanNumeral.findClosest(0));
 
         assertThrows(NoSuchElementException.class,
-                () -> RomanNumeral.getLargest(-1));
+                () -> RomanNumeral.findClosest(-1));
     }
 
     @Test
     void findLargestDivisibleIsSuccessful() {
-        assertEquals(RomanNumeral.getLargest(3).value(), 1);
+        assertEquals(RomanNumeral.findClosest(3).value(), 1);
 
         // Get Exact Value
-        assertEquals(RomanNumeral.getLargest(4).value(), 4);
-        assertEquals(RomanNumeral.getLargest(90).value(), 90);
+        assertEquals(RomanNumeral.findClosest(4).value(), 4);
+        assertEquals(RomanNumeral.findClosest(90).value(), 90);
 
         // Get Largest Roman Numeral lower than value
-        assertEquals(RomanNumeral.getLargest(401).value(), 400);
-        assertEquals(RomanNumeral.getLargest(8).value(), 5);
+        assertEquals(RomanNumeral.findClosest(401).value(), 400);
+        assertEquals(RomanNumeral.findClosest(8).value(), 5);
     }
 
     @Test
