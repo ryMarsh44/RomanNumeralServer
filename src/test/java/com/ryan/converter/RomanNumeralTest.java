@@ -2,20 +2,9 @@ package com.ryan.converter.utils;
 
 import com.ryan.converter.utils.ConverterConstants;
 import com.ryan.converter.utils.RomanNumeral;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-import com.ryan.converter.utils.RomanNumeral.*;
 
-package com.ryan.converter.utils;
-
-import com.ryan.converter.utils.ConverterConstants;
-import com.ryan.converter.utils.RomanNumeral;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 
@@ -54,22 +43,34 @@ class RomanNumeralTest {
 
     @Test
     void findLargestDivisibleIsSuccessful() {
-        assertEquals(RomanNumeral.findClosest(3).value(), 1);
+        assertEquals(RomanNumeral.findClosest(3).number(), 1);
 
         // Get Exact Value
-        assertEquals(RomanNumeral.findClosest(4).value(), 4);
-        assertEquals(RomanNumeral.findClosest(90).value(), 90);
+        assertEquals(RomanNumeral.findClosest(4).number(), 4);
+        assertEquals(RomanNumeral.findClosest(90).number(), 90);
 
-        // Get Largest Roman Numeral lower than value
-        assertEquals(RomanNumeral.findClosest(401).value(), 400);
-        assertEquals(RomanNumeral.findClosest(8).value(), 5);
+        // Get Largest Roman Numeral lower than number
+        assertEquals(RomanNumeral.findClosest(401).number(), 400);
+        assertEquals(RomanNumeral.findClosest(8).number(), 5);
     }
 
     @Test
     void testToString() {
-        Assertions.assertEquals(RomanNumeral.CM.toString(), ConverterConstants.CM);
-        assertEquals(RomanNumeral.IX.toString(), ConverterConstants.IX);
-        assertThrows(NoSuchElementException.class,
-                () -> RomanNumeral.UNKNOWN_NUM.toString());
+        assertEquals(RomanNumeral.CM.toString(), "CM");
+        assertEquals(RomanNumeral.IX.toString(), "IX");
+        assertEquals(RomanNumeral.UNKNOWN_NUM.toString(), "Unknown Number");
+    }
+
+    @Test
+    void validateRomanNumeralIsFalseWithInvalidStr() {
+        assertEquals(RomanNumeral.validRomanNumeralCharacter("J"), false);
+        assertEquals(RomanNumeral.validRomanNumeralCharacter("CMZ"), false);
+        assertEquals(RomanNumeral.validRomanNumeralCharacter("IITI"), false);
+    }
+
+    @Test
+    void validateRomanNumeralReturnsTrueWithValidStr() {
+        assertEquals(RomanNumeral.validRomanNumeralCharacter("MCMDCDCXCLXL"), true);
+        assertEquals(RomanNumeral.validRomanNumeralCharacter("XLLXCCCDDCMM"), true);
     }
 }

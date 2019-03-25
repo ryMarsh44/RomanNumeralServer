@@ -1,54 +1,68 @@
 package com.ryan.converter.utils;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public enum RomanNumeral {
     /**
      * Enumeration of Roman Numeral Mappings.
      */
-    I(1),
-    IV(4),
-    V(5),
-    IX(9),
-    X(10),
-    XL(40),
-    L(50),
-    XC(90),
-    C(100),
-    CD(400),
-    D(500),
-    CM(900),
-    M(1000),
-    UNKNOWN_NUM(-1);
+    I("I", 1),
+    IV("IV", 4),
+    V("V", 5),
+    IX("IX", 9),
+    X("X", 10),
+    XL("XL", 40),
+    L("L", 50),
+    XC("XC", 90),
+    C("C", 100),
+    CD("CD", 400),
+    D("D", 500),
+    CM("CM", 900),
+    M("M", 1000),
+    UNKNOWN_NUM("Unknown Number", -1);
 
 
-    private int value;
+    private int number;
+    private String romanNumeral;
     private static Map<Integer, RomanNumeral> romanNumerals = new HashMap<>();
+    private static HashSet<String> validRomanNumerals = new HashSet<>();
 
-    RomanNumeral(int value) { this.value = value; }
+    RomanNumeral(String romanNumeral, int value) {
+        this.romanNumeral = romanNumeral;
+        this.number = value;
+    }
 
     static {
         for (RomanNumeral romanNumeral : RomanNumeral.values()) {
-            romanNumerals.put(romanNumeral.value, romanNumeral);
+            romanNumerals.put(romanNumeral.number, romanNumeral);
+            validRomanNumerals.add(romanNumeral.toString());
         }
     }
 
     /**
-     * Gets the RomanNumeral that corresponds to the specified int value.
+     * Gets the RomanNumeral that corresponds to the specified int number.
      *
      * @param value The integer of the roman numeral.
      * @return The RomanNumeral that corresponds to the specified integer.
      */
     public static RomanNumeral valueOf(int value) { return romanNumerals.getOrDefault(value, UNKNOWN_NUM); }
 
+    // Todo: This will be used when converting Roman Numeral to Number (Future)
     /**
-     * Finds the closest RomanNumeral that is less than or equal to value.
+     * Reports if string is valid roman numeral
      *
-     * @param value The value to find closest roman numeral for.
-     * @return The RomanNumeral that is closest to parameter (return <= value).
+     * @return boolean indicating if string is a valid roman numeral
+     */
+    public static Boolean validRomanNumeralCharacter(String rn) {
+        return !Arrays.stream(rn.split(""))
+                .anyMatch(x -> !validRomanNumerals.contains(x));
+    }
+
+    /**
+     * Finds the closest RomanNumeral that is less than or equal to number.
+     *
+     * @param value The number to find closest roman numeral for.
+     * @return The RomanNumeral that is closest to parameter (return <= number).
      */
     public static RomanNumeral findClosest(int value) throws NoSuchElementException {
         if (valueOf(value) != UNKNOWN_NUM) return  valueOf(value);
@@ -56,53 +70,22 @@ public enum RomanNumeral {
         return valueOf(romanNumerals
                 .keySet()
                 .stream()
-                .filter(x -> (x < value) && (x != UNKNOWN_NUM.value))
+                .filter(x -> (x < value) && (x != UNKNOWN_NUM.number))
                 .max(Comparator.comparing(Integer::valueOf))
                 .orElseThrow(NoSuchElementException::new));
     }
 
     /**
-     * Gets the integer value for a specific RomanNumeral.
+     * Gets the integer number for a specific RomanNumeral.
      *
-     * @return The integer value of the roman numeral.
+     * @return The integer number of the roman numeral.
      */
-    public int value() { return this.value; }
+    public int number() { return this.number; }
 
     /**
      * Converts RomanNumeral to a string
      *
      * @return The string representing the roman numeral
      */
-    public String toString() {
-        switch (this) {
-            case I:
-                return ConverterConstants.I;
-            case IV:
-                return ConverterConstants.IV;
-            case V:
-                return ConverterConstants.V;
-            case IX:
-                return ConverterConstants.IX;
-            case X:
-                return ConverterConstants.X;
-            case XL:
-                return ConverterConstants.XL;
-            case L:
-                return ConverterConstants.L;
-            case XC:
-                return ConverterConstants.XC;
-            case C:
-                return ConverterConstants.C;
-            case CD:
-                return ConverterConstants.CD;
-            case D:
-                return ConverterConstants.D;
-            case CM:
-                return ConverterConstants.CM;
-            case M:
-                return ConverterConstants.M;
-            default:
-                throw new NoSuchElementException();
-        }
-    }
+    public String toString() { return this.romanNumeral; }
 }

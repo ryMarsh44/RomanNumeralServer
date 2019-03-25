@@ -21,7 +21,7 @@ public class RomanNumeralConverter {
         if (number < MIN_NUM) { return romanNumeral; }
         RomanNumeral closestRomanNumeral = RomanNumeral.findClosest(number);
         return _toRomanHelper(
-                number - closestRomanNumeral.value(),
+                number - closestRomanNumeral.number(),
                 romanNumeral + closestRomanNumeral.toString()
         );
     }

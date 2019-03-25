@@ -47,8 +47,12 @@ class RomanNumeralConverterTest {
     }
 
     static class fromRoman {
-        @Test
-        void fromRoman() {
-        }
+//        @Test
+//        void failsWithInvalidRomanNumeral() {
+//            IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+//                    () -> new RomanNumeralConverter().fromRoman("XXJ"));
+//
+//            assertTrue(thrown.getMessage().contains(MAX_NUM_ERR));
+//        }
     }
 }
