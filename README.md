@@ -8,7 +8,8 @@ RomanNumeralServer is a Java HTTP Server using Spring Boot. It's purpose is to c
 ## Linux 
 1) Clone RomanNumeralService: 
     ``` 
-    $ git clone git@github.com:ryMarsh44/RomanNumeralServer.git ```
+    $ git clone git@github.com:ryMarsh44/RomanNumeralServer.git 
+    ```
 2) install java 8
     ``` 
         $ sudo apt-get update -y && apt-get install -y \
@@ -23,7 +24,9 @@ RomanNumeralServer is a Java HTTP Server using Spring Boot. It's purpose is to c
 4) Currently, I am using intellij for IDE development (https://www.jetbrains.com/idea/download/) 
 
 ## Run Junit tests
-1) ``` $./gradlew clean test ```
+1) JUnit 5 is used
+2) Run tests from the command line:
+``` $./gradlew clean test ```
  
 ## Run Docker instance
 1) Install Docker
@@ -44,3 +47,11 @@ RomanNumeralServer is a Java HTTP Server using Spring Boot. It's purpose is to c
 4) Run container: 
     ``` $ docker run --network=host romannumeral_service ```
 5) HTTP endpoint is available at ``http://localhost:8080/romannumeral?query={Integer}``
+
+
+## References
+1) Roman Numeral Conversion:
+    ``https://www.rapidtables.com/convert/number/how-number-to-roman-numerals.html``
+2) Java Spring Boot: 
+    ``https://spring.io/guides/gs/rest-service/#scratch``
+    
