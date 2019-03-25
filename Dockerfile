@@ -24,4 +24,4 @@ RUN git clone https://github.com/ryMarsh44/RomanNumeralServer.git
 
 # Build Project
 EXPOSE 8080
-ENTRYPOINT source start_service.sh
+ENTRYPOINT ["start_service.sh"]
