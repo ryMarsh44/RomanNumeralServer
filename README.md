@@ -48,6 +48,9 @@ RomanNumeralServer is a Java HTTP Server using Spring Boot. It's purpose is to c
     ``` $ docker run --network=host romannumeral_service ```
 5) HTTP endpoint is available at ``http://localhost:8080/romannumeral?query={Integer}``
 
+## Built With
+
+* [Gradle](https://gradle.org/) - Dependency Management
 
 ## References
 1) Roman Numeral Conversion:
@@ -55,3 +58,6 @@ RomanNumeralServer is a Java HTTP Server using Spring Boot. It's purpose is to c
 2) Java Spring Boot: 
     ``https://spring.io/guides/gs/rest-service/#scratch``
     
+## Authors
+
+* **Ryan Marsh** - *Initial work* - (https://github.com/ryMarsh44/RomanNumeralServer)

@@ -13,7 +13,6 @@ class RomanNumeralConverterTest {
 
     static class toRoman {
 
-        @Tag("slow")
         @Test
         void failsWithNegativeNumber() {
             IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
