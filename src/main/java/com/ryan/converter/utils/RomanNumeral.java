@@ -22,7 +22,7 @@ public enum RomanNumeral {
     UNKNOWN_NUM("Unknown Number", -1);
 
 
-    private int number;
+    public final int number;
     private String romanNumeral;
     private static Map<Integer, RomanNumeral> romanNumerals = new HashMap<>();
     private static HashSet<String> validRomanNumerals = new HashSet<>();
@@ -74,13 +74,6 @@ public enum RomanNumeral {
                 .max(Comparator.comparing(Integer::valueOf))
                 .orElseThrow(NoSuchElementException::new));
     }
-
-    /**
-     * Gets the integer number for a specific RomanNumeral.
-     *
-     * @return The integer number of the roman numeral.
-     */
-    public int number() { return this.number; }
 
     /**
      * Converts RomanNumeral to a string

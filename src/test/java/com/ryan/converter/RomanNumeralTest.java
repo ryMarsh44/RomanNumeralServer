@@ -43,15 +43,15 @@ class RomanNumeralTest {
 
     @Test
     void findLargestDivisibleIsSuccessful() {
-        assertEquals(RomanNumeral.findClosest(3).number(), 1);
+        assertEquals(RomanNumeral.findClosest(3).number, 1);
 
         // Get Exact Value
-        assertEquals(RomanNumeral.findClosest(4).number(), 4);
-        assertEquals(RomanNumeral.findClosest(90).number(), 90);
+        assertEquals(RomanNumeral.findClosest(4).number, 4);
+        assertEquals(RomanNumeral.findClosest(90).number, 90);
 
         // Get Largest Roman Numeral lower than number
-        assertEquals(RomanNumeral.findClosest(401).number(), 400);
-        assertEquals(RomanNumeral.findClosest(8).number(), 5);
+        assertEquals(RomanNumeral.findClosest(401).number, 400);
+        assertEquals(RomanNumeral.findClosest(8).number, 5);
     }
 
     @Test
